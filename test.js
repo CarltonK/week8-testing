@@ -1,16 +1,17 @@
-const { addition, substraction } = require('./index');
+const server = require('./index');
+const request = require('supertest');
 
-test('Calculator can add numbers', () => {
-    // EXPECTATION VS RESULT
-    expect(addition(1, 2)).toBe(3);
+it('Can successfully call the / endpoint', async () => {
+    const resp = await request(server).get('/').send({});
+    expect(resp.statusCode).toEqual(200);
+    expect(resp.body).toHaveProperty('message');
+});
+it('Can successfully call the /users endpoint', async () => {
+    const resp = await request(server).get('/users').send({});
+    expect(resp.statusCode).toEqual(200);
+    expect(resp.body).toHaveProperty('users');
 });
 
-test('Calculator can add strings', () => {
-    // EXPECTATION VS RESULT
-    expect(addition('1', '2')).not.toBe(3);
-});
-
-test('Calculator can substract', () => {
-    // EXPECTATION VS RESULT
-    expect(substraction(2, 1)).toBe(1);
-});
+afterAll(() => {
+    server.close();
+})

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testExecutions version="1">
+    <file path="/home/hawks/Moringa/week-8-testing/test.js">
+        <testCase name="Can successfully call the / endpoint" duration="53"/>
+        <testCase name="Can successfully call the /users endpoint" duration="9"/>
+    </file>
+</testExecutions>

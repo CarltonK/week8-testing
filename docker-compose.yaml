@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  test:
+    container_name: test-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - type: bind
+        source: .
+        target: /app/
+    ports:
+      - 8080:8080
+  sonarqube:
+    container_name: sonar-test
+    image: sonarqube
+    ports:
+      - 9000:9000

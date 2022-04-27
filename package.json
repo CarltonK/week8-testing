@@ -4,11 +4,31 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "sonar": "node sonar.js",
+    "start": "node index.js",
     "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^28.0.0"
+    "jest": "^28.0.0",
+    "jest-sonar-reporter": "^2.0.0",
+    "sonarqube-scanner": "^2.8.1",
+    "supertest": "^6.2.3"
+  },
+  "jestSonar": {
+    "reportPath": "coverage",
+    "reportFile": "test-reporter.xml",
+    "indent": 4
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testResultsProcessor": "jest-sonar-reporter"
+  },
+  "dependencies": {
+    "express": "^4.18.0"
   }
 }

@@ -1,15 +1,21 @@
-function addition(x, y) {
-    return x + y;
-}
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 8080;
 
-const addResult = addition(1,2)
-console.log('ADDITION RESULT =',addResult)
+app.get('/', (req, res) => {
+    const { method, path } = req;
+    console.log(method, path);
+    return res.status(200).json({ message: 'The server is up and running' });
+});
 
-function substraction(x, y) {
-    return x - y;
-}
+app.get('/users', (req, res) => {
+    const { method, path } = req;
+    console.log(method, path);
+    return res.status(200).json({ users: [{'name': 'X'}, {'name': 'y'}] });
+});
 
-const subtractionResult = substraction(2,1)
-console.log('SUBTRACTION RESULT =',subtractionResult)
+const server = app.listen(port, () => {
+    console.log(`The server is up and running on ${port}`);
+});
 
-module.exports = { addition, substraction };
+module.exports = server;

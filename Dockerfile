@@ -10,6 +10,4 @@ RUN npm i
 
 COPY . /app/
 
-RUN npm test
-
-CMD [ "node", "index" ]
+CMD [ "npm", "run", "start" ]
